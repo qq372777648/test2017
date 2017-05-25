@@ -3,4 +3,43 @@
   <groupId>net.lzw.test2017</groupId>
   <artifactId>test2017</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.cxf>3.0.4</version.cxf>
+    </properties>
+  
+  
+  	<dependencies>
+          <!-- CXF -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${version.cxf}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${version.cxf}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-transports-http-jetty</artifactId>
+		    <version>${version.cxf}</version>
+		</dependency>
+		
+		<!-- cglib 
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>3.1</version>
+		</dependency>-->
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>2.2.2</version>
+		</dependency>
+        
+        
+    </dependencies>
 </project>
