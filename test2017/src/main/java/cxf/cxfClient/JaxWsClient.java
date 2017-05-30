@@ -28,12 +28,12 @@ public class JaxWsClient {
 		}
 		
 		
-		//返回实现类（client HelloService.class 与 service 的一致  包括包名）
-		JaxWsProxyFactoryBean f2=new JaxWsProxyFactoryBean();// for simple方式的
-		f2.setAddress("http://localhost:8081/ws/soap/hello");
-		f2.setServiceClass(HelloService.class);
-		HelloService helloService =f2.create(HelloService.class);
-		helloService.say("klc");
+//		//返回实现类（client HelloService.class 与 service 的一致  包括包名）
+//		JaxWsProxyFactoryBean f2=new JaxWsProxyFactoryBean();// for simple方式的
+//		f2.setAddress("http://139.162.80.167:8081/ws/soap/hello");
+//		f2.setServiceClass(net.lzw.jvframeworkTest.cxfServer.HelloService.class);
+//		net.lzw.jvframeworkTest.cxfServer.HelloService helloService =f2.create(net.lzw.jvframeworkTest.cxfServer.HelloService.class);
+//		System.out.println(helloService.say("klc"));
 		
 	}
 
