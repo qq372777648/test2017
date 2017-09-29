@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 */
 public class Test1 {
 	public static void main(String[] args) throws ParseException {
+
+		
 		System.out.print("  aa bb c ".trim());
 		System.out.print("aaa");
 		
