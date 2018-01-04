@@ -1,4 +1,4 @@
-package core.NIO.cs;
+package core.NIO.simpleCS;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

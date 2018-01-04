@@ -1,4 +1,4 @@
-package core.NIO.cs;
+package core.NIO.simpleCS;
 
 import java.io.IOException;  
 import java.net.InetSocketAddress;  
@@ -14,7 +14,7 @@ import java.util.Set;
 /**
  * 
  * @author Administrator
- ** 一个线程 ，一个selector，多个channel
+ ** 一个channel  一个selector
  */
 public class TestServer {  
       
@@ -75,7 +75,7 @@ public class TestServer {
             server = (ServerSocketChannel) selectionKey.channel();  
             // 接受到此通道套接字的连接。  
             // 此方法返回的套接字通道（如果有）将处于阻塞模式。  
-            client = server.accept();  //创建渠道
+            client = server.accept();  
             // 配置为非阻塞  
             client.configureBlocking(false);  
             // 注册到selector，等待连接  
@@ -90,7 +90,7 @@ public class TestServer {
             if (count > 0) {  
                 receiveText = new String( receivebuffer.array(),0,count);  
                 System.out.println("1--:"+receiveText);  
-                client.register(selector, SelectionKey.OP_WRITE);  //每当
+                client.register(selector, SelectionKey.OP_WRITE);  
             }  
         } else if (selectionKey.isWritable()) {  
             //将缓冲区清空以备下次写入  

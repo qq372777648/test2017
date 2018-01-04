@@ -14,9 +14,9 @@ public class SetTest1 {
 
 	public static void main(String[] args) {
 		Set<String> values = new HashSet<String>();
-		values.add("hello1");
-		values.add("hello1");
-		values.add("world1");
+		values.add("dhello1");
+		values.add("chello1");
+		values.add("aworld1");
 		System.out.println(values);
 	}
 }

@@ -2,6 +2,7 @@ package test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,8 +15,9 @@ import java.util.regex.Pattern;
 */
 public class Test1 {
 	public static void main(String[] args) throws ParseException {
+		System.out.println( new Date(1507890851991l));
 
-		
+		System.out.println(System.currentTimeMillis());
 		System.out.print("  aa bb c ".trim());
 		System.out.print("aaa");
 		
