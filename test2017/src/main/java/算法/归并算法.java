@@ -7,6 +7,7 @@ import java.util.Arrays;
  * @date 2017年2月20日 上午10:08:02
  * @Description:
  * @version V1.0
+ * 假的吧，归并算法处理大数排序，必须不能把所有数据都加都内存
  */
 public class 归并算法 {
 	 public static void main(String[] args) {

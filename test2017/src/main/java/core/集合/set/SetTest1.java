@@ -17,6 +17,8 @@ public class SetTest1 {
 		values.add("dhello1");
 		values.add("chello1");
 		values.add("aworld1");
+		System.out.println(values.add("1"));
+		System.out.println(values.add("1"));
 		System.out.println(values);
 	}
 }
