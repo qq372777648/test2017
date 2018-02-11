@@ -302,6 +302,16 @@
 	    <artifactId>ikanalyzer</artifactId>
 	    <version>2012_u6</version>
 	</dependency>
+	
+	
+	
+	<!--  solr  Searching On Lucene w/Replication -->
+	<!-- https://mvnrepository.com/artifact/org.apache.solr/solr-solrj -->
+	<dependency>
+	    <groupId>org.apache.solr</groupId>
+	    <artifactId>solr-solrj</artifactId>
+	    <version>5.5.5</version>
+	</dependency>
 
 
 
