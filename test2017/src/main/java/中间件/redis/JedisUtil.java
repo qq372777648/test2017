@@ -6,7 +6,9 @@ import redis.clients.jedis.Jedis;
  * @author lzw
  * @date 2017年2月27日 上午9:31:11
  * @Description:
- * @version V1.0
+ * @version
+ * V1.1 新增发布订阅
+ *  V1.0
  */
 public class JedisUtil {
 //	jedis.set(key, value, nxxx, expx, time)
@@ -212,6 +214,14 @@ public class JedisUtil {
 //		return result;
 //	}
 	
+	public static void  publish(String channel,String message){
+		Jedis jedis = RedisFactory.getConnection();
+		jedis.publish(channel, message);
+		jedis.close();
+	}
+	
+	
+	
 	
 
 	
@@ -221,11 +231,16 @@ public class JedisUtil {
 	
 	
 	public static void main(String[] args) {
-		Key.onlyAdd(SerializeUtil.serialize("aaa"), 
-				SerializeUtil.serialize(new RedisObj("sss",122, new RedisObj("yyyy", 222, null))), 300);
+		testConsumer();
 		
-		Object value = SerializeUtil.unserialize(Key.get(SerializeUtil.serialize("aaa"))); 
-		System.out.println(((RedisObj)value).getA());
+//		Key.onlyAdd(SerializeUtil.serialize("aaa"), 
+//				SerializeUtil.serialize(new RedisObj("sss",122, new RedisObj("yyyy", 222, null))), 300);
+//		
+//		Object value = SerializeUtil.unserialize(Key.get(SerializeUtil.serialize("aaa"))); 
+//		System.out.println(((RedisObj)value).getA());
+
+		
+
         
 		
 		
@@ -294,6 +309,58 @@ public class JedisUtil {
 //	        		SerializeUtil.serialize(JedisUtil.EX),
 //	        		60
 //	        		); 
+	}
+	
+	private static void testConsumer(){
+//		new Thread(){
+//			public void run() {
+//				Jedis jedis = RedisFactory.getConnection();
+//				for (int i = 0; i < 10; i++) {
+//					
+//					jedis.rpush("sheep meat pool", i+"");
+//				}
+//			};
+//		}.start();
+		
+		Jedis jedis = RedisFactory.getConnection();
+		System.out.println(jedis.blpop(3, "sheep meat pool").toString());
+		
+
+	}
+	
+	private static void testSubscribe(){
+		final SubscribeChannel listener=new SubscribeChannel();
+		
+		new Thread(){
+			public void run() {
+				
+				for (int i = 0; i < 10; i++) {
+					System.out.println("发布");
+					publish("comeon_subscribe_me",i+""+i);
+					try {
+						sleep(10);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+//				listener.unsubscribe("comeon_subscribe_me");
+				listener.unsubscribe();//取消一个
+			};
+		}.start();
+		
+		new Thread(){
+			public void run() {
+				
+				Jedis jedis = RedisFactory.getConnection();
+				jedis.subscribe(listener, "comeon_subscribe_me");
+				System.out.println("cant excute2");
+			};
+		}.start();
+		
+		Jedis jedis = RedisFactory.getConnection();
+		jedis.subscribe(listener, "comeon_subscribe_me");
+		System.out.println("cant excute");
 	}
 
 }

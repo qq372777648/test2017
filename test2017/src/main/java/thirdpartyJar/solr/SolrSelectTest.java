@@ -13,7 +13,25 @@ import org.apache.solr.common.SolrDocumentList;
 
 public class SolrSelectTest {
 	private final static String URL = "http://localhost:8983/solr/jcg";// 注意当多core时，要指定一个core，不然会报错
-	private final static HttpSolrServer server = new HttpSolrServer(URL);
+	private final  static HttpSolrServer server = new HttpSolrServer(URL);
+	static{
+	    try {  
+//	    	server .set
+//	        server = new CommonsHttpSolrServer(url);  
+	        server.setSoTimeout(1000);  
+	        server.setConnectionTimeout(100);  
+	        server.setDefaultMaxConnectionsPerHost(100);  
+	        server.setMaxTotalConnections(100);  
+	        server.setFollowRedirects(false);  
+	        server.setAllowCompression(true);  
+	        server.setMaxRetries(1);  
+
+	    } catch (Exception e) {  
+	        // TODO Auto-generated catch block  
+	        e.printStackTrace();  
+	    } 
+	}
+ 
 
 	public static void main(String[] args) throws Exception {
 		select();
